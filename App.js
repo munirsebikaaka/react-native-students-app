@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from "react-native";
+import RegisterNewStudent from "./pages/RigesterNewStudent";
+import StudentDetails from "./components/StudentDetails";
+import { useStudents } from "./contexts/StudentsContext";
+import StudentsList from "./pages/StudentsList";
 
-export default function App() {
+const App = () => {
+  const { seeLists, showStudentDetails } = useStudents();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.mainContainer}>
+      <>
+        {showStudentDetails ? (
+          <StudentDetails />
+        ) : (
+          <>{!seeLists ? <RegisterNewStudent /> : <StudentsList />}</>
+        )}
+      </>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  mainContainer: { flex: 1 },
 });
+
+export default App;
