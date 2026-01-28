@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import RegisterNewStudent from "./pages/RigesterNewStudent";
-import StudentDetails from "./components/StudentDetails";
 import { useStudents } from "./contexts/StudentsContext";
 import StudentsList from "./pages/StudentsList";
+import StudentDetails from "./pages/StudentDetails";
 
 const App = () => {
   const { seeLists, showStudentDetails } = useStudents();
